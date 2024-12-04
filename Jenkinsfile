@@ -14,7 +14,7 @@ pipeline {
         stage('Setup Environment') {
             steps {
                 sh '''
-                python3.12 -m venv env
+                sudo python3 -m venv env
                 source env/bin/activate
                 pip install -r requirements.txt
                 '''
@@ -24,16 +24,16 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                docker build -t $IMAGE .
+                sudo docker build -t $IMAGE .
                 '''
             }
         }
         stage('Run Docker Container') {
             steps {
                 sh '''
-                docker stop django_app_container || true
-                docker rm django_app_container || true
-                docker run -d --name django_app_container -p 8000:8000 $IMAGE
+                 sudo docker stop django_app_container || true
+                sudo docker rm django_app_container || true
+                sudo docker run -d --name django_app_container -p 8000:8000 $IMAGE
                 '''
             }
         }
