@@ -1,2 +1,0 @@
-+ python3.12 -m venv env
-/var/jenkins_home/workspace/django-git-ci@tmp/durable-f5c60279/script.sh.copy: 2: python3.12: not found
